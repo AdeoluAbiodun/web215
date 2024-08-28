@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: coral;
+  animation: changeColor 210s infinite;
+  color: darkblue;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+header {
+  text-align: center;
+  background-color: white;
+  border-bottom-style: dashed; /* Apply border style to the header */
+  border-bottom-width: 50vh; /* Set border length to half the page height */
+}
+
+@keyframes changeColor {
+  0% { background-color: coral; }
+  25% { background-color: skyblue; }
+  50% { background-color: lightgreen; }
+  75% { background-color: pink; }
+  100% { background-color: yellow; }
+}
+
+h1 {
+  color: #F4C430;
+  animation: changeColor 210s infinite;
+}
+
+h2 {
+  font-size: 28px;
+  color: #FFC40C;
+  text-align: center;
+}
+
+p {
+  color: darkblue;
+}
+
+li {
+  list-style: disc;
+  margin-left: 20px;
+  color: darkblue;
+}
+
+nav {
+  color: rgb(0, 128, 128);
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+  margin: 0 10px;
+  font-size: 15px;
+  word-spacing: 0.3em;
+}
+
+figure {
+  width: 260px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.sub-list {
+  list-style-type: square;
+  margin-left: 20px;
+}
+
+.resized-w3c {
+  max-width: 2px;
+  height: auto;
+}
+
+.slogan {
+  font-style: italic;
+}
+
+.head-section {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
+}
+
+.toc-list li {
+  list-style: square;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 22px;
+  padding-right: 10px;
+}
+
+.toc-image {
+  display: grid;
+  place-items: center;
+  align-items: center;
+  border: solid white 10px;
+}
+
+label {
+  display: block;
+  margin: auto;
+}
