@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+  function openGitHub() {
+    window.open("https://adeoluabiodun.github.io/introduction.html", "_blank");
+  }
+
+  function openLinkedIn() {
+    window.open("https://www.linkedin.com/in/adeolu-abiodun-42a858279/", "_blank");
+  }
+
   const links = document.querySelectorAll(".custom-list a");
 
-  links.forEach(link => {
+  links.forEach((link) => {
     link.addEventListener("click", function(event) {
       event.preventDefault();
 
@@ -11,15 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
         openGitHub();
       } else if (href === "https://www.linkedin.com/in/adeolu-abiodun-42a858279/") {
         openLinkedIn();
+      } else {
+        window.location.href = href;
       }
     });
   });
-
-  function openGitHub() {
-    window.open("https://adeoluabiodun.github.io/introduction.html", "_blank");
-  }
-
-  function openLinkedIn() {
-    window.open("https://www.linkedin.com/in/adeolu-abiodun-42a858279/", "_blank");
-  }
 });
