@@ -1,125 +1,168 @@
 * {
+  background-color: peachpuff;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: coral;
-  animation: changeColor 180s infinite;
-  color: #3C1518;
-  font-family: 'Pacifico', cursive;
+  background-color: skyblue;
+  color: #005f73;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 20px;
 }
 
 header, footer {
   text-align: center;
-  background-color: #EAEAEA;
-}
-
-@keyframes changeColor {
-  0% { background-color: coral; }
-  25% { background-color: skyblue; }
-  50% { background-color: lightgreen; }
-  75% { background-color: pink; }
-  100% { background-color: yellow; }
+  background-color: #005f73;
+  color: #e0e0e0;
+  padding: 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  border-bottom: 2px solid #0a9396;
 }
 
 h1 {
-  color: #8D0801;
-  font-family: Montserrat, Roboto Slab;
+  color: #005f73;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
 }
 
 h2 {
   font-size: 28px;
-  color: #4F000B;
+  color: #005f73;
   text-align: center;
-  font-family: Merriweather, sans-serif;
+  font-family: 'Merriweather', serif;
+  margin-bottom: 15px;
 }
 
 p {
-  color: #3C1518;
+  color: #005f73;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 li {
   list-style: disc;
-  margin-left: 20px;
-  color: #3C1518;
+  margin-left: 25px;
+  color: #005f73;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 nav {
-  color: #3C1518;
-  padding: 10px;
+  background-color: #005f73;
+  color: #e0e0e0;
+  padding: 15px;
   text-align: center;
-  font-weight: 800;
-  margin: 0 10px;
-  font-size: 15px;
-  word-spacing: 0.3em;
+  font-weight: bold;
+  margin: 20px 0;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+a:link, a:visited {
+  color: #0a9396;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #ca6702;
+  text-decoration: underline;
 }
 
 a:active {
-    color: #92140C;
+  color: #001219;
 }
 
 figure {
-  width: 260px;
-  height: auto;
+  width: 300px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  margin: auto;
 }
 
 .sub-list {
   list-style-type: square;
-  margin-left: 20px;
-  color: #3C1518;
+  margin-left: 30px;
+  color: #2b2b2b;
 }
 
 .resized-w3c {
-  max-width: 2px;
+  max-width: 100px;
   height: auto;
 }
 
 .slogan {
   font-style: italic;
-  color: #3C1518;
+  color: #005f73;
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .head-section {
   text-align: center;
-  color: #3C1518;
+  color: #2b2b2b;
+  margin-bottom: 30px;
 }
-
-/*@media (max-width: 768px) {
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-}
-
-@media (min-width: 1025px) {
-}
-
-*/
 
 .toc-list li {
   list-style: square;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  color: #3C1518;
-  font-size: 22px;
-  padding-right: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: #2b2b2b;
+  font-size: 20px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
 }
 
 .toc-image {
   display: grid;
   place-items: center;
   align-items: center;
-  border: solid white 10px;
+  border: solid #005f73 5px;
 }
 
 label {
   display: block;
-  margin: auto;
-  color: #3C1518;
+  margin: 15px 0;
+  color: #2b2b2b;
+  font-size: 18px;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  nav {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    font-size: 20px;
+  }
 }
