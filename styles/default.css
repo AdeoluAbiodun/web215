@@ -1,6 +1,6 @@
 html, body {
-  background-color: #f0f8ff; 
-  color: #1b262c;
+  background-color: #f4f1de; /*f0f8ff;*/ 
+  color: #e07a5f; /*1b262c;*/
   font-family: 'Open Sans', sans-serif;
   line-height: 1.8;
   margin: 0;
@@ -16,8 +16,8 @@ body {
 
 header, footer {
   text-align: center;
-  background-color: #0077b6;
-  color: #ffe5d9;
+  background-color: #3d405b; /*0077b6;*/
+  color: #e07a5f; /*81b29a;  /*ffe5d9;*/
   padding: 20px 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
@@ -25,7 +25,7 @@ header, footer {
 }
 
 h1 {
-  color: #ffafcc;
+  color: #f2cc8f; /*#3d405b; /*#f2cc8f;*/ /*ffafcc;*/
   font-family: 'Montserrat', sans-serif;
   font-size: 42px;
   margin-bottom: 20px;
@@ -34,7 +34,7 @@ h1 {
 
 h2 {
   font-size: 30px;
-  color: #ffafcc;
+  color: #3d405b; /*#f2cc8f;*/ /*ffafcc;*/
   text-align: center;
   font-weight: 1500;
   font-family: 'Merriweather', serif;
@@ -42,7 +42,7 @@ h2 {
 }
 
 p {
-  color: #30475e;
+  color: #3d405b; /*#f2cc8f;*/ /*ffafcc;*/
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 20px;
@@ -51,14 +51,14 @@ p {
 li {
   list-style: disc;
   margin-left: 25px;
-  color: #30475e;
+  color: #e07a5f; /*30475e;*/
   font-size: 18px;
   margin-bottom: 10px;
 }
 
 nav {
-  background-color: #1b262c;
-  color: #ffe5d9;
+  background-color: #e07a5f; /*81b29a;*/ /*#1b262c;*/
+  color: #f2cc8f; /*#e07a5f; *//*ffe5d9;*/
   padding: 15px;
   text-align: center;
   font-weight: bold;
@@ -69,13 +69,13 @@ nav {
 }
 
 a:link, a:visited {
-  color: #ffafcc;
+  color: #3d405b; /*#ffafcc;*/
   text-decoration: none;
   font-weight: bold;
 }
 
 a:hover {
-  color: #ff6392;
+  color: #e07a5f; /*#ff6392;*/
   text-decoration: underline;
 }
 
