@@ -1,6 +1,6 @@
 html, body {
   background-color: #f4f1de; /*f0f8ff;*/ 
-  color: #e07a5f; /*1b262c;*/
+  color: #3d405b; /*#e07a5f; *//*1b262c;*/
   font-family: 'Open Sans', sans-serif;
   line-height: 1.8;
   margin: 0;
@@ -51,7 +51,7 @@ p {
 li {
   list-style: disc;
   margin-left: 25px;
-  color: #e07a5f; /*30475e;*/
+  color: #3d405b; /*30475e;*/
   font-size: 18px;
   margin-bottom: 10px;
 }
