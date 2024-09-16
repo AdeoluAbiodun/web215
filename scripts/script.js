@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const cname = name + "=";
             const decodedCookie = decodeURIComponent(document.cookie);
             const ca = decodedCookie.split(';');
-            for(let i = 0; i < ca.length; i++) {
+            for (let i = 0; i < ca.length; i++) {
                 let c = ca[i];
                 while (c.charAt(0) === ' ') {
                     c = c.substring(1);
@@ -85,17 +85,17 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('form-container').innerHTML = resultHTML;
         }
 
-        // Function to populate interests from cookie on page load
+            // Function to populate interests from cookie on page load
         function populateInterests() {
             const interests = getCookie('interests');
             if (interests) {
                 const interestsArray = interests.split(',');
-                interestsArray.forEach(interest => {
+                interestsArray.forEach(interest =>) {
                     const checkbox = document.querySelector(`input[name="interests"][value="${interest}"]`);
                     if (checkbox) {
                         checkbox.checked = true;
                     }
-                });
+                };
             }
         }
 
