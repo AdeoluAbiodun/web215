@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-
 //Function to set the cookie
         function setCookie(name, value, days) {
             const d = new Date();
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Function to handle form submission
         function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); //
 
             // Get form values
             const name = document.getElementById('name').value;
@@ -85,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('form-container').innerHTML = resultHTML;
         }
 
-            // Function to populate interests from cookie on page load
         function populateInterests() {
             const interests = getCookie('interests');
             if (interests) {
