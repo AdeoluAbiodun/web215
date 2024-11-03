@@ -1,23 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
   function openGitHub() {
-    window.open("https://adeoluabiodun.github.io/introduction.html", "_blank");
+      window.open("https://adeoluabiodun.github.io/introduction.html", "_blank");
   }
+  
   function openLinkedIn() {
-    window.open("https://www.linkedin.com/in/adeolu-abiodun-42a858279/", "_blank");
+      window.open("https://www.linkedin.com/in/adeolu-abiodun-42a858279/", "_blank");
   }
+  
   const links = document.querySelectorAll(".custom-list a");
   links.forEach((link) => {
-    link.addEventListener("click", function(event) {
-      event.preventDefault();
-      const href = link.getAttribute("href");
-      if (href === "https://adeoluabiodun.github.io/introduction.html") {
-        openGitHub();
-      } else if (href === "https://www.linkedin.com/in/adeolu-abiodun-42a858279/") {
-        openLinkedIn();
-      } else {
-        window.location.href = href;
-      }
-    });
+      link.addEventListener("click", function(event) {
+          event.preventDefault();
+          const href = link.getAttribute("href");
+          if (href === "https://adeoluabiodun.github.io/introduction.html") {
+              openGitHub();
+          } else if (href === "https://www.linkedin.com/in/adeolu-abiodun-42a858279/") {
+              openLinkedIn();
+          } else {
+              window.location.href = href;
+          }
+      });
   });
 });
 
@@ -34,13 +36,13 @@ function getCookie(name) {
   const decodedCookie = decodeURIComponent(document.cookie);
   const ca = decodedCookie.split(';');
   for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(cname) === 0) {
-      return c.substring(cname.length, c.length);
-    }
+      let c = ca[i];
+      while (c.charAt(0) === ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(cname) === 0) {
+          return c.substring(cname.length, c.length);
+      }
   }
   return "";
 }
@@ -63,16 +65,16 @@ function handleFormSubmit(event) {
 
   // Create a result HTML
   const resultHTML = `
-    <h2>Submitted Information</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Personal Background:</strong> ${background}</p>
-    <p><strong>Professional Experience:</strong> ${professional}</p>
-    <p><strong>Courses I am Taking and Why:</strong> ${courses}</p>
-    <p><strong>Primary Computer Platform:</strong> ${computer}</p>
-    <p><strong>Funny/Interesting Item:</strong> ${funny}</p>
-    <p><strong>Preferred Contact Method:</strong> ${contactMethod}</p>
-    <p><strong>Interests:</strong> ${interests.join(', ')}</p>
+      <h2>Submitted Information</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Personal Background:</strong> ${background}</p>
+      <p><strong>Professional Experience:</strong> ${professional}</p>
+      <p><strong>Courses I am Taking and Why:</strong> ${courses}</p>
+      <p><strong>Primary Computer Platform:</strong> ${computer}</p>
+      <p><strong>Funny/Interesting Item:</strong> ${funny}</p>
+      <p><strong>Preferred Contact Method:</strong> ${contactMethod}</p>
+      <p><strong>Interests:</strong> ${interests.join(', ')}</p>
   `;
 
   // Replace the form with the result
@@ -82,13 +84,13 @@ function handleFormSubmit(event) {
 function populateInterests() {
   const interests = getCookie("interests");
   if (interests) {
-    const interestsArray = interests.split(',');
-    interestsArray.forEach(interest => {
-      const checkbox = document.querySelector(`input[name="interests"][value="${interest}"]`);
-      if (checkbox) {
-        checkbox.checked = true;
-      }
-    };
+      const interestsArray = interests.split(',');
+      interestsArray.forEach(interest => {
+          const checkbox = document.querySelector(`input[name="interests"][value="${interest}"]`);
+          if (checkbox) {
+              checkbox.checked = true;
+          }
+      });
   }
 }
 
