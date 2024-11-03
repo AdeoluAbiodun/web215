@@ -88,7 +88,7 @@ function populateInterests() {
       if (checkbox) {
         checkbox.checked = true;
       }
-    });
+    };
   }
 }
 
