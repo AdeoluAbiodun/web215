@@ -59,7 +59,7 @@ function handleFormSubmit(event) {
   const computer = document.getElementById("computer").value;
   const funny = document.getElementById("funny").value;
   const contactMethod = document.querySelector('input[name="contact"]:checked').value;
-  const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+  const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map((cb) => cb.value);
 
   setCookie("interests", interests.join(','), 7);
 
@@ -85,7 +85,7 @@ function populateInterests() {
   const interests = getCookie("interests");
   if (interests) {
       const interestsArray = interests.split(',');
-      interestsArray.forEach(interest => {
+      interestsArray.forEach((interest) => {
           const checkbox = document.querySelector(`input[name="interests"][value="${interest}"]`);
           if (checkbox) {
               checkbox.checked = true;
