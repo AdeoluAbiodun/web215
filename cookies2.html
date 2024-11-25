@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Introduction Form with Cookies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/default.css" rel="stylesheet">
+    <style>
+        #info-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f4f4f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .info-section {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Introduction Form with Cookies</h2>
+
+        <!-- Current Info -->
+        <div id="info-container">
+            <h3>Current Information</h3>
+            <div id="current-info" class="info-section"></div>
+
+            <h3>Last Saved Information</h3>
+            <div id="last-saved-info" class="info-section"></div>
+        </div>
+
+        <!-- Form -->
+        <form id="introduction-form">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="background">Personal Background:</label>
+                <textarea id="background" name="background" rows="4"></textarea>
+
+                <label for="professional">Professional Experience:</label>
+                <textarea id="professional" name="professional" rows="4"></textarea>
+
+                <label for="computer">Primary Computer Platform:</label>
+                <input type="text" id="computer" name="computer" required>
+            </fieldset>
+
+            <button type="submit">Save Information</button>
+            <button type="button" id="purge-cookies">Purge Cookies</button>
+        </form>
+    </main>
+
+    <script>
+        // Helper: Get IP Address
+        async function getIPAddress() {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            return data.ip;
+        }
+
+        // Helper: Get Timestamp
+        function getTimestamp() {
+            return new Date().toLocaleString();
+        }
+
+        // Helper: Get Browser Info
+        function getBrowserInfo() {
+            return navigator.userAgent;
+        }
+
+        // Populate Current Info
+        async function populateCurrentInfo() {
+            const ip = await getIPAddress();
+            const timestamp = getTimestamp();
+            const browser = getBrowserInfo();
+
+            document.getElementById('current-info').innerHTML = `
+                <p><strong>Browser:</strong> ${browser}</p>
+                <p><strong>Timestamp:</strong> ${timestamp}</p>
+                <p><strong>IP Address:</strong> ${ip}</p>
+            `;
+        }
+
+        // Populate Last Saved Info
+        function populateLastSavedInfo() {
+            const savedData = JSON.parse(localStorage.getItem('formData')) || {};
+            const { browser, timestamp, ip, form } = savedData;
+
+            if (browser && timestamp && ip) {
+                document.getElementById('last-saved-info').innerHTML = `
+                    <p><strong>Browser:</strong> ${browser}</p>
+                    <p><strong>Timestamp:</strong> ${timestamp}</p>
+                    <p><strong>IP Address:</strong> ${ip}</p>
+                `;
+            } else {
+                document.getElementById('last-saved-info').innerHTML = '<p>No saved information available.</p>';
+            }
+
+            // Populate Form
+            if (form) {
+                Object.entries(form).forEach(([key, value]) => {
+                    const field = document.getElementById(key);
+                    if (field) field.value = value;
+                });
+            }
+        }
+
+        // Save Form Data and Current Info
+        async function saveFormData(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('introduction-form'));
+            const form = Object.fromEntries(formData.entries());
+            const ip = await getIPAddress();
+            const timestamp = getTimestamp();
+            const browser = getBrowserInfo();
+
+            const dataToSave = { form, browser, timestamp, ip };
+            localStorage.setItem('formData', JSON.stringify(dataToSave));
+
+            alert('Form data saved successfully.');
+            location.reload();
+        }
+
+        // Purge Cookies
+        function purgeCookies() {
+            localStorage.removeItem('formData');
+            alert('Saved data purged.');
+            location.reload();
+        }
+
+        // Event Listeners
+        document.getElementById('introduction-form').addEventListener('submit', saveFormData);
+        document.getElementById('purge-cookies').addEventListener('click', purgeCookies);
+
+        // Initialization
+        populateCurrentInfo();
+        populateLastSavedInfo();
+    </script>
+</body>
+</html>
