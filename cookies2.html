@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cookies Form with Session Info</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/default.css" rel="stylesheet">
+    <style>
+        #info-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f4f4f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .info-section {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Cookies Form with Session Info</h2>
+
+        <!-- Current Info -->
+        <div id="info-container">
+            <h3>Current Session Information</h3>
+            <div id="current-session-info"></div>
+
+            <h3>Last Session Information</h3>
+            <div id="last-session-info"></div>
+        </div>
+
+        <!-- Form -->
+        <form id="introduction-form">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="background">Personal Background:</label>
+                <textarea id="background" name="background" rows="4"></textarea>
+
+                <label for="professional">Professional Experience:</label>
+                <textarea id="professional" name="professional" rows="4"></textarea>
+
+                <label for="computer">Primary Computer Platform:</label>
+                <input type="text" id="computer" name="computer" required>
+            </fieldset>
+
+            <button type="submit">Save Information</button>
+            <button type="button" id="purge-cookies">Purge Cookies</button>
+        </form>
+    </main>
+
+    <script>
+        // Helper: Set Cookie
+        function setCookie(name, value, days = 7) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
+        }
+
+        // Helper: Get Cookie
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        // Helper: Delete Cookie
+        function deleteCookie(name) {
+            document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
+        }
+
+        // Populate Current Info
+        function populateCurrentInfo() {
+            const browser = navigator.userAgent;
+            const timestamp = new Date().toLocaleString();
+
+            const currentInfo = `
+                <p><strong>Browser:</strong> ${browser}</p>
+                <p><strong>Timestamp:</strong> ${timestamp}</p>
+            `;
+            document.getElementById('current-session-info').innerHTML = currentInfo;
+
+            setCookie('currentBrowser', browser);
+            setCookie('currentTimestamp', timestamp);
+        }
+
+        // Populate Last Session Info
+        function populateLastSessionInfo() {
+            const lastBrowser = getCookie('lastBrowser');
+            const lastTimestamp = getCookie('lastTimestamp');
+
+            const lastInfo = lastBrowser && lastTimestamp
+                ? `<p><strong>Browser:</strong> ${lastBrowser}</p>
+                   <p><strong>Timestamp:</strong> ${lastTimestamp}</p>`
+                : '<p>No previous session information available.</p>';
+
+            document.getElementById('last-session-info').innerHTML = lastInfo;
+        }
+
+        // Save Form Data and Update Cookies
+        function saveFormData(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('introduction-form'));
+            for (const [key, value] of formData.entries()) {
+                setCookie(key, value);
+            }
+
+            // Save current session data as "last" for future use
+            setCookie('lastBrowser', getCookie('currentBrowser'));
+            setCookie('lastTimestamp', getCookie('currentTimestamp'));
+
+            alert('Form data saved successfully.');
+            location.reload();
+        }
+
+        // Purge Cookies
+        function purgeCookies() {
+            const allCookies = document.cookie.split(';');
+            allCookies.forEach(cookie => {
+                const name = cookie.split('=')[0].trim();
+                deleteCookie(name);
+            });
+
+            alert('All cookies have been purged.');
+            location.reload();
+        }
+
+        // Initialize Page
+        document.getElementById('introduction-form').addEventListener('submit', saveFormData);
+        document.getElementById('purge-cookies').addEventListener('click', purgeCookies);
+        populateCurrentInfo();
+        populateLastSessionInfo();
+    </script>
+</body>
+</html>
